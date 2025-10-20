@@ -3,89 +3,156 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BONANNO — Promociones</title>
+  <title>BONANNO – Promociones</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    
+    .box{max-width:900px;margin:0 auto 40px;background:#fff;border-radius:14px;box-shadow:0 2px 6px rgba(0,0,0,.12);padding:18px}
+    .tabla{width:100%;border-collapse:separate;border-spacing:0 8px}
+    .tabla th,.tabla td{padding:10px}
+    .tabla th{color:#3B2A28;text-align:left}
+    .row{background:#f6f3f2;border-radius:10px}
+    .row td:first-child{font-weight:700;color:#3B2A28}
+    .row input{width:90px;padding:6px;border:1px solid #ccc;border-radius:8px}
+    .radios{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+    .radios label{background:#e6e0de;padding:8px 12px;border-radius:18px;cursor:pointer}
+    .btn{background:#3B2A28;color:#fff;border:0;border-radius:25px;padding:10px 16px;font-weight:700;cursor:pointer}
+    .btn:hover{background:#5a3c39}
+    .totales{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .card{flex:1 1 220px;background:#e6e0de;border-radius:12px;padding:12px;text-align:center}
+    .card h4{color:#3B2A28;margin-bottom:6px}
+    .nota{font-size:13px;color:#555;margin-top:6px}
+  </style>
 </head>
-
 <body>
+
   
   <div id="navbar">
-  <h1 id="logo">BONANNO</h1>
-  <div id="nav-links">
-    <a href="index.html">Inicio</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="promociones.html">Promociones</a>
-    <a href="nosotros.html">Nosotros</a>
-    <a href="contacto.html">Contacto</a>
+    <h1 id="logo">BONANNO</h1>
+    <div id="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="promociones.html" aria-current="page">Promociones</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
   </div>
-</div>
+
+  <h2 class="titulo-seccion">Promociones</h2>
 
   
-  <div id="promos">
-    <h2 class="titulo-seccion">Promociones</h2>
+  <div class="box" style="text-align:center">
+    <p><b>Elegí cuántas personas</b> se hacen cada servicio, seleccioná una promo y tocá <i>Calcular</i>.</p>
+    <div class="nota">Las promos se aplican por servicio (por ejemplo, 3×2 en “Corte de pelo”).</div>
+  </div>
 
-    <div class="fila-promos">
-      <div class="promo-card">
-        <div class="promo-icono">
-          <img src="img/promo-icon.png" alt="Promo">
-        </div>
-        <div class="promo-txt">
-          Corte + Barba<br><strong>$18.000</strong>
-        </div>
-      </div>
+  
+  <div class="box">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Servicio</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row">
+          <td>Corte de pelo</td>
+          <td id="precio1">$14.000</td>
+          <td><input id="cant1" type="number" min="0" step="1" placeholder="0"></td>
+        </tr>
+        <tr class="row">
+          <td>Corte de barba</td>
+          <td id="precio2">$10.000</td>
+          <td><input id="cant2" type="number" min="0" step="1" placeholder="0"></td>
+        </tr>
+        <tr class="row">
+          <td>Corte de barba con toalla</td>
+          <td id="precio3">$12.000</td>
+          <td><input id="cant3" type="number" min="0" step="1" placeholder="0"></td>
+        </tr>
+      </tbody>
+    </table>
 
-      <div class="promo-card">
-        <div class="promo-icono">
-          <img src="img/promo-icon.png" alt="Promo">
-        </div>
-        <div class="promo-txt">
-          Corte + Barba con toalla<br><strong>$20.000</strong>
-        </div>
-      </div>
-
-      <div class="promo-card">
-        <div class="promo-icono">
-          <img src="img/promo-icon.png" alt="Promo">
-        </div>
-        <div class="promo-txt">
-          Corte + Lavado de cabello<br><strong>$15.000</strong>
-        </div>
-      </div>
+    
+    <div class="radios">
+      <label><input type="radio" name="promo" value="50seg" checked> 50% en el 2.º</label>
+      <label><input type="radio" name="promo" value="3x2"> 3×2</label>
+      <label><input type="radio" name="promo" value="10off"> 10% OFF desde $20.000</label>
     </div>
 
-    <h2 class="titulo-seccion" style="margin-top:30px;">Promociones Bancarias</h2>
+    <button class="btn" id="btnCalcular">Calcular</button>
 
-    <div class="fila-promos">
-      <div class="bank-card">
-        <div class="logo-box">
-          <img src="img/santander.png" alt="Santander Women">
-        </div>
-        <p><strong>Santander Women</strong><br>Martes y viernes — 30% reintegro</p>
+    
+    <div class="totales">
+      <div class="card">
+        <h4>Total sin descuento</h4>
+        <div id="tSin">$0</div>
       </div>
-
-      <div class="bank-card">
-        <div class="logo-box">
-          
-          <img src="img/BBVA.png" alt="BBVA">
-        </div>
-        <p><strong>BBVA</strong><br>Jueves — 35% reintegro</p>
+      <div class="card">
+        <h4>Descuento</h4>
+        <div id="tDesc">$0</div>
       </div>
-
-      <div class="bank-card">
-        <div class="logo-box">
-          <img src="img/efectivo.png" alt="Efectivo">
-        </div>
-        <p><strong>Efectivo</strong><br>Todos los días — 10% OFF pagando en efectivo</p>
+      <div class="card">
+        <h4>Total final</h4>
+        <div id="tFinal">$0</div>
       </div>
     </div>
-
-    <p class="legal">Los beneficios pueden variar sin previo aviso. Aplican TyC de cada entidad.</p>
   </div>
 
   
   <div id="footer">
-    <img src="img/mono-b.png" alt="Logo Bonanno" class="mono">
-    <p>© 2025 BONANNO</p>
+    <img class="mono" src="img/mono-b.png" alt="">
+    © 2025 BONANNO
   </div>
+
+  
+  <script>
+    
+    const PRECIO1 = 14000; // Corte de pelo
+    const PRECIO2 = 10000; // Corte de barba
+    const PRECIO3 = 12000; // Corte de barba con toalla
+
+    function n(id){
+      const v = parseFloat(document.getElementById(id).value);
+      return isNaN(v) ? 0 : v;
+    }
+
+    function desc50Segundo(precio, cant){
+      return Math.floor(cant/2) * (precio * 0.5);
+    }
+
+    function desc3x2(precio, cant){
+      return Math.floor(cant/3) * precio;
+    }
+
+    document.getElementById("btnCalcular").addEventListener("click", function(){
+      const c1 = n("cant1"), c2 = n("cant2"), c3 = n("cant3");
+
+      
+      const sub1 = PRECIO1 * c1;
+      const sub2 = PRECIO2 * c2;
+      const sub3 = PRECIO3 * c3;
+      const subtotal = sub1 + sub2 + sub3;
+
+      const promo = document.querySelector('input[name="promo"]:checked').value;
+
+      let descuento = 0;
+      if (promo === "50seg"){
+        descuento = desc50Segundo(PRECIO1,c1) + desc50Segundo(PRECIO2,c2) + desc50Segundo(PRECIO3,c3);
+      } else if (promo === "3x2"){
+        descuento = desc3x2(PRECIO1,c1) + desc3x2(PRECIO2,c2) + desc3x2(PRECIO3,c3);
+      } else if (promo === "10off"){
+        if (subtotal >= 20000){ descuento = subtotal * 0.10; }
+      }
+
+      const total = Math.max(0, subtotal - descuento);
+
+      document.getElementById("tSin").textContent   = "$" + subtotal.toLocaleString("es-AR");
+      document.getElementById("tDesc").textContent  = "-$" + descuento.toLocaleString("es-AR");
+      document.getElementById("tFinal").textContent = "$" + total.toLocaleString("es-AR");
+    });
+  </script>
 </body>
 </html>
